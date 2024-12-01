@@ -48,7 +48,9 @@ app.get("/api/users", (req, res) => {
   } = req;
   //when filter and value undefined
   if (!filter && !value) return res.send(mockUsers);
-  res.send(mockUsers);
+  if(filter && value) return res.send(mockUsers.filter((user)=> user[filter].includes(value))
+  )
+  
 });
 
 app.listen(PORT, () => {
